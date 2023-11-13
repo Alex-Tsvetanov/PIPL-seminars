@@ -1,6 +1,4 @@
-package lab4.StringBuilder_and_PushPullStringBuilderObserver;
-
-import lab4.ConditionalStringBuilderObserver.WrongMethodException;
+package lab4.ConditionalStringBuilderObserver;
 
 public class Main {
     public static void main(String[] args) {

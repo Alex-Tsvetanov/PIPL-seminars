@@ -1,6 +1,4 @@
-package lab4.StringBuilder_and_PushPullStringBuilderObserver;
-
-import lab4.ConditionalStringBuilderObserver.WrongMethodException;
+package lab4.ConditionalStringBuilderObserver;
 
 public class PushPullStringBuilderObservable extends StringBuilder implements Observable {
 
@@ -34,8 +32,7 @@ public class PushPullStringBuilderObservable extends StringBuilder implements Ob
         if (mode == ObserverMode.PULL) {
             String newStr = getStr().substring(0, getStr().length() - 1);
             this.setStr(newStr);
-        }
-        else
+        } else
             throw new WrongMethodException();
     }
 }
