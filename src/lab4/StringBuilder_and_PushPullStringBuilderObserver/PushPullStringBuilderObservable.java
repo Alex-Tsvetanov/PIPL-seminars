@@ -1,4 +1,4 @@
-package lab4_StringBuilder_and_PushPullStringBuilderObserver;
+package lab4.StringBuilder_and_PushPullStringBuilderObserver;
 
 public class PushPullStringBuilderObservable extends StringBuilder implements Observable {
 

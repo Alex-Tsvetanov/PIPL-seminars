@@ -1,9 +1,6 @@
-package lab4_task2;
+package lab4.task1;
 
-import java.io.Externalizable;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -11,17 +8,14 @@ public class Person implements Externalizable {
     private String name;
     private LocalDate birth;
     private transient long age;
-    private transient String address;
 
-    public Person(String name, LocalDate birth, String address) {
+    public Person(String name, LocalDate birth) {
         this.setName(name);
         this.setBirth(birth);
-        this.setAddress(address);
     }
     public Person() {
         this.setName("");
         this.setBirth(LocalDate.now());
-        this.setAddress("");
     }
 
     public String getName() {
@@ -53,32 +47,16 @@ public class Person implements Externalizable {
     public void writeExternal(ObjectOutput out) throws IOException {
         out.writeObject(name);
         out.writeObject(birth);
-        out.writeObject(address);
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
         this.setName((String) in.readObject());
         this.setBirth((LocalDate) in.readObject());
-        this.setAddress((String) in.readObject());
     }
 
     @Override
     public String toString() {
-        return "Person {" +
-            "name='" + getName() + '\'' +
-            ", birth=" + getBirth() +
-            ", age=" + getAge() +
-            ", address='" + getAddress() + '\'' +
-            '}';
-
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    private void setAddress(String address) {
-        this.address = address;
+        return "{" + getName() + ", " + getBirth().toString() + ", " + getAge() + "}";
     }
 }

@@ -1,8 +1,6 @@
-package lab4_task2;
+package lab4.task1;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -23,6 +21,8 @@ public class Main {
         }
     }
 
+    private static final String filePath = "person.bin";
+
     private static void writeObjects(Scanner in) {
         System.out.println("Number of people?");
         final int n = in.nextInt();
@@ -32,12 +32,9 @@ public class Main {
             String name = in.nextLine();
             System.out.print("Birth? ");
             LocalDate birth = LocalDate.parse(in.nextLine());
-            System.out.print("Address? ");
-            String address = in.nextLine();
 
-            people.add(new Person(name, birth, address));
+            people.add(new Person(name, birth));
         }
-        final String filePath = "person.bin";
         try(ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(filePath))))
         {
             out.writeObject(people);
@@ -54,7 +51,6 @@ public class Main {
 
     private static Person[] readObjects() {
         ArrayList<Person> people = null;
-        final String filePath = "person.bin";
         try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(filePath))))
         {
             people = (ArrayList<Person>) in.readObject();

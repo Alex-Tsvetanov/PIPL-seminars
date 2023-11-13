@@ -1,6 +1,8 @@
-package lab4_task1;
+package lab4.task2;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -30,8 +32,10 @@ public class Main {
             String name = in.nextLine();
             System.out.print("Birth? ");
             LocalDate birth = LocalDate.parse(in.nextLine());
+            System.out.print("Address? ");
+            String address = in.nextLine();
 
-            people.add(new Person(name, birth));
+            people.add(new Person(name, birth, address));
         }
         final String filePath = "person.bin";
         try(ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(filePath))))
