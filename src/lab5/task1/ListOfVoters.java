@@ -1,17 +1,18 @@
 package lab5.task1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class VoterList {
+public class ListOfVoters {
     private final List<Voter> voters;
-    public VoterList() {
+    public ListOfVoters() {
         voters = new ArrayList<>();
     }
-    public VoterList addVoter(Voter voter) {
-        voters.add(voter);
+    public ListOfVoters addVoter(Voter... voters) {
+        this.voters.addAll(Arrays.asList(voters));
         return this;
     }
     public List<Voter> getVoters() {
